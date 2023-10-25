@@ -5,7 +5,10 @@ const app = express();
 
 const taskController = require('./controllers/taskController');
 
-router.post('/task', taskController.createTask);
+router.post('/register', taskController.register);
+
+
+
 router.get('/task', taskController.getTasks);
 router.get('/task/:id', taskController.getTask);
 router.put('/task/:id', taskController.updateTask);
