@@ -1,0 +1,47 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+    id       Int      @id @default(autoincrement())
+    tasks Task[]
+}
+
+model Task {
+  id            Int     @id @default(autoincrement())
+  name          String
+  description   String
+  taskType      String
+  userid        Int
+  user          User    @relation(fields: [userid], references: [id])
+  createdDate   DateTime
+  dueDate       DateTime
+  completedDate DateTime?
+}
+
+
+
+// task #1 
+// Walk Dog 
+// Group: personal
+
+// task #2
+// DO HW
+// Group: school
+
+// filter 
+
+// Task # 9849394
+// Name: Make Dinner
+// Group: personal
+// Due Date: 10/10/2020
+// Created Date: 10/10/2020
+// Description: Make dinner for the family
